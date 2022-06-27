@@ -12,6 +12,9 @@ import java.util.ArrayList;
 
 //TODO: finish this and add javadoc
 public class PrecisionTest {
+    static PrecisionList precisionList;
+    static CommonPrecisionPrimitiveList commonPrecisionPrimitiveList;
+    static UndefinedPrecisionPrimitiveList undefinedPrecisionPrimitiveList;
 
     /**
      * The main method.
@@ -20,52 +23,50 @@ public class PrecisionTest {
      * @param args args
      */
     public static void main(String[] args) {
-        System.out.println("testing precise numbers");
-        PreciseNumberTest preciseNumberTest = new PreciseNumberTest();
+        initializeLists();
+        output();
     }
 
-    static class PreciseNumberTest {
-        PrecisionList precisionList;
-        CommonPrecisionPrimitiveList commonPrecisionPrimitiveList;
-        UndefinedPrecisionPrimitiveList undefinedPrecisionPrimitiveList;
+    private static void initializeLists() {
+        NumberError commonError = new NumberError(
+                ErrorType.ABSOLUTE,
+                new BigDecimal("0.5"));
+        precisionList = new PrecisionList(new ArrayList<>() {{
+            add(new PreciseNumber(
+                    new BigDecimal("5.1"),
+                    commonError));
+            add(new PreciseNumber(
+                    new BigDecimal("5.2"),
+                    commonError));
+            add(new PreciseNumber(
+                    new BigDecimal("5.3"),
+                    commonError));
+            add(new PreciseNumber(
+                    new BigDecimal("5.4"),
+                    commonError));
+            add(new PreciseNumber(
+                    new BigDecimal("5.5"),
+                    commonError));
+        }});
 
-        public PreciseNumberTest() {
-            NumberError commonError = new NumberError(
-                    ErrorType.ABSOLUTE,
-                    new BigDecimal("0.5"));
-            precisionList = new PrecisionList(new ArrayList<>() {{
-                add(new PreciseNumber(
-                        new BigDecimal("5.1"),
-                        commonError));
-                add(new PreciseNumber(
-                        new BigDecimal("5.2"),
-                        commonError));
-                add(new PreciseNumber(
-                        new BigDecimal("5.3"),
-                        commonError));
-                add(new PreciseNumber(
-                        new BigDecimal("5.4"),
-                        commonError));
-                add(new PreciseNumber(
-                        new BigDecimal("5.5"),
-                        commonError));
-            }});
+        ArrayList<Double> primitivesList = new ArrayList<>() {{
+            add(5.1);
+            add(5.2);
+            add(5.3);
+            add(5.4);
+            add(5.5);
+        }};
 
-            ArrayList<Double> primitivesList = new ArrayList<>() {{
-                add(5.1);
-                add(5.2);
-                add(5.3);
-                add(5.4);
-                add(5.5);
-            }};
+        commonPrecisionPrimitiveList = new CommonPrecisionPrimitiveList(
+                commonError,
+                primitivesList);
 
-            commonPrecisionPrimitiveList = new CommonPrecisionPrimitiveList(
-                    commonError,
-                    primitivesList);
+        undefinedPrecisionPrimitiveList = new UndefinedPrecisionPrimitiveList(
+                primitivesList
+        );
+    }
 
-            undefinedPrecisionPrimitiveList = new UndefinedPrecisionPrimitiveList(
-                    primitivesList
-            );
-        }
+    private static void output() {
+        //
     }
 }
