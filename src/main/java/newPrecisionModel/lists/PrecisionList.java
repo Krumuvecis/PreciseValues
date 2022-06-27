@@ -37,12 +37,16 @@ public class PrecisionList extends AbstractPrecisionList {
     @Override
     public @NotNull NumberError getAbsoluteError() {
         //TODO: finish this
+        System.err.println("Unfinished functionality:" + "\n"
+                + "PrecisionList.getAbsoluteError() returns null, where annotated as not-null!");
         return null;
     }
 
     @Override
     public @NotNull NumberError getRelativeError() {
         //TODO: finish this
+        System.err.println("Unfinished functionality:" + "\n"
+                + "PrecisionList.getRelativeError() returns null, where annotated as not-null!");
         return null;
     }
 }

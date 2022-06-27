@@ -17,11 +17,17 @@ public class CommonPrecisionPrimitiveList extends AbstractPrimitivePrecisionList
 
     @Override
     public @NotNull NumberError getAbsoluteError() {
+        //TODO: finish this
+        System.err.println("Unfinished functionality:" + "\n"
+                + "CommonPrecisionPrimitiveList.getAbsoluteError() returns null, where annotated as not-null!");
         return null;
     }
 
     @Override
     public @NotNull NumberError getRelativeError() {
+        //TODO: finish this
+        System.err.println("Unfinished functionality:" + "\n"
+                + "CommonPrecisionPrimitiveList.getRelativeError() returns null, where annotated as not-null!");
         return null;
     }
 }

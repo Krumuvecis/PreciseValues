@@ -16,11 +16,17 @@ public class UndefinedPrecisionPrimitiveList extends AbstractPrimitivePrecisionL
 
     @Override
     public @NotNull NumberError getAbsoluteError() {
+        //TODO: finish this
+        System.err.println("Unfinished functionality:" + "\n"
+                + "UndefinedPrecisionPrimitiveList.getAbsoluteError() returns null, where annotated as not-null!");
         return null;
     }
 
     @Override
     public @NotNull NumberError getRelativeError() {
+        //TODO: finish this
+        System.err.println("Unfinished functionality:" + "\n"
+                + "UndefinedPrecisionPrimitiveList.getRelativeError() returns null, where annotated as not-null!");
         return null;
     }
 }
