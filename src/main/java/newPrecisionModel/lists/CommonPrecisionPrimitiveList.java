@@ -3,6 +3,7 @@ package newPrecisionModel.lists;
 import newPrecisionModel.errorModel.NumberError;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -11,8 +12,10 @@ import org.jetbrains.annotations.Nullable;
 public class CommonPrecisionPrimitiveList extends AbstractPrimitivePrecisionList {
     public NumberError commonPrecision;
 
-    public CommonPrecisionPrimitiveList(@Nullable List<Double> members) {
+    public CommonPrecisionPrimitiveList(@Nullable NumberError precision,
+                                        @Nullable List<Double> members) {
         super(members);
+        this.commonPrecision = Objects.requireNonNullElse(precision, new NumberError());
     }
 
     @Override
