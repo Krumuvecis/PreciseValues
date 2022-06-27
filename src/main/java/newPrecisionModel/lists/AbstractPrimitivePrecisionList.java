@@ -23,8 +23,13 @@ public abstract class AbstractPrimitivePrecisionList extends AbstractPrecisionLi
     }
 
     @Override
-    public @NotNull BigDecimal getMemberSum() {
-        return null;
+    public final @NotNull BigDecimal getMemberSum() {
+        BigDecimal sum = new BigDecimal(0);
+
+        for (double member : members) {
+            sum = sum.add(new BigDecimal(member));
+        }
+        return sum;
     }
 
     @Override
