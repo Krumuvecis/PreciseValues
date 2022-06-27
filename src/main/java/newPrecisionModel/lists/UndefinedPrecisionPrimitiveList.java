@@ -52,7 +52,7 @@ public class UndefinedPrecisionPrimitiveList extends AbstractPrimitivePrecisionL
     }
 
     @Override
-    public @NotNull NumberError getAbsoluteError() {
+    public final @NotNull NumberError getAbsoluteError() {
         List<IntermediaryMember> intermediaryMembers = initializeIntermediaryMembers();
 
         //TODO: finish this
@@ -99,7 +99,7 @@ public class UndefinedPrecisionPrimitiveList extends AbstractPrimitivePrecisionL
     }
 
     @Override
-    public @NotNull NumberError getRelativeError() {
+    public final @NotNull NumberError getRelativeError() {
         return new NumberError(
                 ErrorType.RELATIVE,
                 getAbsoluteError().getError(ErrorType.RELATIVE, getAverage()));

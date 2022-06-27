@@ -19,7 +19,7 @@ public class CommonPrecisionPrimitiveList extends AbstractPrimitivePrecisionList
     }
 
     @Override
-    public @NotNull NumberError getAbsoluteError() {
+    public final @NotNull NumberError getAbsoluteError() {
         //TODO: finish this
         System.err.println("Unfinished functionality:" + "\n"
                 + "CommonPrecisionPrimitiveList.getAbsoluteError() returns null, where annotated as not-null!");
@@ -27,7 +27,7 @@ public class CommonPrecisionPrimitiveList extends AbstractPrimitivePrecisionList
     }
 
     @Override
-    public @NotNull NumberError getRelativeError() {
+    public final @NotNull NumberError getRelativeError() {
         //TODO: finish this
         System.err.println("Unfinished functionality:" + "\n"
                 + "CommonPrecisionPrimitiveList.getRelativeError() returns null, where annotated as not-null!");
