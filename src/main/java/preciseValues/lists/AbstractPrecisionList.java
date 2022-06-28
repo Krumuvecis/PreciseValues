@@ -14,12 +14,12 @@ import org.jetbrains.annotations.Nullable;
 //TODO: add javadoc
 abstract class AbstractPrecisionList implements PrecisionListInterface {
     @Override
-    public final PreciseNumber getAverage(@Nullable ErrorType errorType) {
+    public final @NotNull PreciseNumber getAverage(@Nullable ErrorType errorType) {
         return new PreciseNumber(getAverage(), getError(errorType));
     }
 
     @Override
-    public final BigDecimal getAverage() {
+    public @NotNull BigDecimal getAverage() {
         BigDecimal undefinedMemberSum = BigDecimal.ZERO;
         BigDecimal memberSum = Objects.requireNonNullElse(getMemberSum(), undefinedMemberSum);
 

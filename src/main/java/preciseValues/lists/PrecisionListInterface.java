@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 //TODO: add javadoc
 interface PrecisionListInterface {
-    PreciseNumber getAverage(@Nullable ErrorType errorType);
-    BigDecimal getAverage();
+    @NotNull PreciseNumber getAverage(@Nullable ErrorType errorType);
+    @NotNull BigDecimal getAverage();
     @NotNull NumberError getError(@Nullable ErrorType errorType);
 }

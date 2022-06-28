@@ -3,26 +3,26 @@ package preciseValues.lists;
 import preciseValues.errorModel.NumberError;
 import preciseValues.number.PreciseNumber;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Objects;
 import java.math.BigDecimal;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Objects;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 //TODO: finish this and add javadoc
-public class PrecisionList extends AbstractPrecisionList {
-    public List<PreciseNumber> members;
+public class WeightedPrecisionList extends AbstractPrecisionList {
+    public Map<PreciseNumber, Integer> members;
 
-    public PrecisionList(@Nullable ArrayList<PreciseNumber> members) {
-        this.members = Objects.requireNonNullElse(members, new ArrayList<>());
+    public WeightedPrecisionList(@Nullable HashMap<PreciseNumber, Integer> members) {
+        this.members = Objects.requireNonNullElse(members, new HashMap<>());
     }
 
-    //prevents further overriding
     @Override
     public final @NotNull BigDecimal getAverage() {
-        return super.getAverage();
+        //TODO: finish this
+        return null;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class PrecisionList extends AbstractPrecisionList {
     @Override
     public final @NotNull BigDecimal getMemberSum() {
         BigDecimal sum = new BigDecimal(0);
-        for (PreciseNumber member : members) {
+        for (PreciseNumber member : members.keySet()) {
             sum = sum.add(member.getValue());
         }
         return sum;

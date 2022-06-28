@@ -10,11 +10,18 @@ import java.math.BigDecimal;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+//TODO: add javadoc
 public abstract class AbstractPrimitivePrecisionList extends AbstractPrecisionList {
     public List<Double> members;
 
     public AbstractPrimitivePrecisionList(@Nullable List<Double> members) {
         this.members = Objects.requireNonNullElse(members, new ArrayList<>());
+    }
+
+    //prevents further overriding
+    @Override
+    public final @NotNull BigDecimal getAverage() {
+        return super.getAverage();
     }
 
     @Override
@@ -25,7 +32,6 @@ public abstract class AbstractPrimitivePrecisionList extends AbstractPrecisionLi
     @Override
     public final @NotNull BigDecimal getMemberSum() {
         BigDecimal sum = new BigDecimal(0);
-
         for (double member : members) {
             sum = sum.add(new BigDecimal(member));
         }
