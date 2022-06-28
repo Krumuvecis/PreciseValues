@@ -11,11 +11,10 @@ import org.jetbrains.annotations.Nullable;
 public class NumberError {
     private static final BigDecimal
             UNDEFINED_ERROR_VALUE = new BigDecimal(0),
-            NON_NULL_AVERAGE_VALUE = new BigDecimal(0),
-            NON_ZERO_AVERAGE_VALUE = new BigDecimal(1); // this has to be an infinitely small number; 1 for simplicity
+            NON_NULL_AVERAGE_VALUE = new BigDecimal(0);
 
     private final ErrorType errorType;
-    private final BigDecimal error;
+    private final BigDecimal errorValue;
 
     //TODO: add javadoc
     @SuppressWarnings("unused")
@@ -26,7 +25,7 @@ public class NumberError {
     //TODO: add javadoc
     public NumberError(@Nullable ErrorType errorType, @Nullable BigDecimal errorValue) {
         this.errorType = Objects.requireNonNullElse(errorType, ErrorType.UNDEFINED);
-        this.error = Objects.requireNonNullElse(errorValue, UNDEFINED_ERROR_VALUE);
+        this.errorValue = Objects.requireNonNullElse(errorValue, UNDEFINED_ERROR_VALUE);
     }
 
     /**
@@ -48,7 +47,7 @@ public class NumberError {
      */
     @SuppressWarnings("unused")
     public final BigDecimal getErrorValue() {
-        return error;
+        return errorValue;
     }
 
     //TODO: add javadoc
@@ -62,9 +61,9 @@ public class NumberError {
 
     private BigDecimal getAbsoluteError(@Nullable BigDecimal averageValue) {
         return switch (errorType) {
-            case ABSOLUTE -> error;
+            case ABSOLUTE -> errorValue;
             case RELATIVE -> getAbsoluteFromRelative(
-                    error,
+                    errorValue,
                     Objects.requireNonNullElse(averageValue, NON_NULL_AVERAGE_VALUE));
             default -> UNDEFINED_ERROR_VALUE;
         };
@@ -78,9 +77,9 @@ public class NumberError {
     private BigDecimal getRelativeError(@Nullable BigDecimal averageValue) {
         return switch (errorType) {
             case ABSOLUTE -> getRelativeFromAbsolute(
-                    error,
+                    errorValue,
                     Objects.requireNonNullElse(averageValue, NON_NULL_AVERAGE_VALUE));
-            case RELATIVE -> error;
+            case RELATIVE -> errorValue;
             default -> UNDEFINED_ERROR_VALUE;
         };
     }
