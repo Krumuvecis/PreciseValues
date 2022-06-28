@@ -2,7 +2,7 @@ package main;
 
 import preciseValues.errorModel.ErrorType;
 import preciseValues.errorModel.NumberError;
-import preciseValues.number.PreciseNumber;
+import preciseValues.preciseNumber.PreciseNumber;
 import preciseValues.lists.UndefinedPrecisionPrimitiveList;
 import preciseValues.lists.CommonPrecisionPrimitiveList;
 import preciseValues.lists.PrecisionList;
@@ -100,8 +100,6 @@ public class PrecisionTest {
         //printLine("Average : " + weightedPrecisionList.getAverage());
         //printLine("Absolute error : " + weightedPrecisionList.getAverage(ErrorType.ABSOLUTE).getError().getErrorValue());
         //printLine("Relative error : " + weightedPrecisionList.getAverage(ErrorType.RELATIVE).getError().getErrorValue() + " %");
-
-
     }
 
     private static void printLine(String line) {

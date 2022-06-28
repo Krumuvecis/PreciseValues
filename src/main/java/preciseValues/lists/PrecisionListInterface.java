@@ -2,7 +2,7 @@ package preciseValues.lists;
 
 import preciseValues.errorModel.ErrorType;
 import preciseValues.errorModel.NumberError;
-import preciseValues.number.PreciseNumber;
+import preciseValues.preciseNumber.PreciseNumber;
 
 import java.math.BigDecimal;
 

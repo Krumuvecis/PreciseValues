@@ -1,7 +1,7 @@
 package preciseValues.lists;
 
 import preciseValues.errorModel.NumberError;
-import preciseValues.number.PreciseNumber;
+import preciseValues.preciseNumber.PreciseNumber;
 
 import java.util.List;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package preciseValues.number;
+package preciseValues.preciseNumber;
 
 import preciseValues.errorModel.NumberError;
 
