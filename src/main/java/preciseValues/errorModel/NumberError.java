@@ -7,7 +7,9 @@ import java.math.RoundingMode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-//TODO: add javadoc
+/**
+ * TODO: finish this javadoc
+ */
 public class NumberError {
     private static final BigDecimal
             UNDEFINED_ERROR_VALUE = new BigDecimal(0),
@@ -16,13 +18,20 @@ public class NumberError {
     private final ErrorType errorType;
     private final BigDecimal errorValue;
 
-    //TODO: add javadoc
-    @SuppressWarnings("unused")
+    /**
+     * Creates a blank NumberError object.
+     * (Intended for cases where the error is not defined)
+     */
     public NumberError() {
         this(null, null);
     }
 
-    //TODO: add javadoc
+    /**
+     * Creates a new NumberError object.
+     *
+     * @param errorType     Type of the error.
+     * @param errorValue    Value of the error.
+     */
     public NumberError(@Nullable ErrorType errorType, @Nullable BigDecimal errorValue) {
         this.errorType = Objects.requireNonNullElse(errorType, ErrorType.UNDEFINED);
         this.errorValue = Objects.requireNonNullElse(errorValue, UNDEFINED_ERROR_VALUE);
@@ -35,7 +44,7 @@ public class NumberError {
      * @return Error type.
      */
     @SuppressWarnings("unused")
-    public final ErrorType getErrorType() {
+    public final @NotNull ErrorType getErrorType() {
         return errorType;
     }
 
@@ -46,12 +55,21 @@ public class NumberError {
      * @return Error value.
      */
     @SuppressWarnings("unused")
-    public final BigDecimal getErrorValue() {
+    public final @NotNull BigDecimal getErrorValue() {
         return errorValue;
     }
 
-    //TODO: add javadoc
-    public final BigDecimal getError(@Nullable ErrorType errorType, @Nullable BigDecimal averageValue) {
+    /**
+     * TODO: finish this javadoc
+     *
+     * @param errorType     Type of error to return.
+     * @param averageValue  Average value for reference.
+     *
+     * @return Value of the error.
+     */
+    public final @NotNull BigDecimal getError(
+            @Nullable ErrorType errorType,
+            @Nullable BigDecimal averageValue) {
         return switch (Objects.requireNonNullElse(errorType, ErrorType.UNDEFINED)) {
             case ABSOLUTE -> getAbsoluteError(averageValue);
             case RELATIVE -> getRelativeError(averageValue);
@@ -59,7 +77,7 @@ public class NumberError {
         };
     }
 
-    private BigDecimal getAbsoluteError(@Nullable BigDecimal averageValue) {
+    private @NotNull BigDecimal getAbsoluteError(@Nullable BigDecimal averageValue) {
         return switch (errorType) {
             case ABSOLUTE -> errorValue;
             case RELATIVE -> getAbsoluteFromRelative(
@@ -69,12 +87,13 @@ public class NumberError {
         };
     }
 
-    private static BigDecimal getAbsoluteFromRelative(@NotNull BigDecimal errorValue,
-                                                      @NotNull BigDecimal averageValue) {
+    private static @NotNull BigDecimal getAbsoluteFromRelative(
+            @NotNull BigDecimal errorValue,
+            @NotNull BigDecimal averageValue) {
         return averageValue.multiply(errorValue);
     }
 
-    private BigDecimal getRelativeError(@Nullable BigDecimal averageValue) {
+    private @NotNull BigDecimal getRelativeError(@Nullable BigDecimal averageValue) {
         return switch (errorType) {
             case ABSOLUTE -> getRelativeFromAbsolute(
                     errorValue,
@@ -84,8 +103,9 @@ public class NumberError {
         };
     }
 
-    private static BigDecimal getRelativeFromAbsolute(@NotNull BigDecimal errorValue,
-                                                      @NotNull BigDecimal averageValue) {
+    private static @NotNull BigDecimal getRelativeFromAbsolute(
+            @NotNull BigDecimal errorValue,
+            @NotNull BigDecimal averageValue) {
         BigDecimal result;
         try {
             result = errorValue.divide(averageValue, RoundingMode.HALF_UP);
