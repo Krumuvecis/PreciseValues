@@ -67,6 +67,31 @@ public class PrecisionTest {
     }
 
     private static void output() {
-        //
+        sectionSeparator();
+        printLine("Testing PrecisionList");
+        printLine("Average : " + precisionList.getAverage());
+        //printLine("Absolute error : " + precisionList.getAverage(ErrorType.ABSOLUTE).getError().getErrorValue());
+        //printLine("Relative error : " + precisionList.getAverage(ErrorType.RELATIVE).getError().getErrorValue() + " %");
+
+        sectionSeparator();
+        printLine("Testing CommonPrecisionPrimitiveList");
+        printLine("Average : " + commonPrecisionPrimitiveList.getAverage());
+        //printLine("Absolute error : " + commonPrecisionPrimitiveList.getAverage(ErrorType.ABSOLUTE).getError().getErrorValue());
+        //printLine("Relative error : " + commonPrecisionPrimitiveList.getAverage(ErrorType.RELATIVE).getError().getErrorValue() + " %");
+
+        sectionSeparator();
+        printLine("Testing UndefinedPrecisionPrimitiveList");
+        printLine("Average : " + undefinedPrecisionPrimitiveList.getAverage());
+        //printLine("Absolute error : " + undefinedPrecisionPrimitiveList.getAverage(ErrorType.ABSOLUTE).getError().getErrorValue());
+        //printLine("Relative error : " + undefinedPrecisionPrimitiveList.getAverage(ErrorType.RELATIVE).getError().getErrorValue() + " %");
+    }
+
+    private static void printLine(String line) {
+        System.out.println(line);
+    }
+
+    private static void sectionSeparator() {
+        String separator = "------------";
+        printLine(separator);
     }
 }
