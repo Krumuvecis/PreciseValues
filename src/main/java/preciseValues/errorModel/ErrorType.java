@@ -1,4 +1,4 @@
-package newPrecisionModel.errorModel;
+package preciseValues.errorModel;
 
 /**
  * An enum for all supported error types.

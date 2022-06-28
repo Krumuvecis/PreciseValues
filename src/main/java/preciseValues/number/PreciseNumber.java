@@ -1,6 +1,6 @@
-package newPrecisionModel.number;
+package preciseValues.number;
 
-import newPrecisionModel.errorModel.NumberError;
+import preciseValues.errorModel.NumberError;
 
 import java.util.Objects;
 import java.math.BigDecimal;

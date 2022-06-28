@@ -1,4 +1,4 @@
-package newPrecisionModel.errorModel;
+package preciseValues.errorModel;
 
 import java.util.Objects;
 import java.math.BigDecimal;

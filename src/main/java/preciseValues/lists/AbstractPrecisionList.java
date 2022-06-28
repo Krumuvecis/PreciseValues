@@ -1,8 +1,8 @@
-package newPrecisionModel.lists;
+package preciseValues.lists;
 
-import newPrecisionModel.errorModel.ErrorType;
-import newPrecisionModel.errorModel.NumberError;
-import newPrecisionModel.number.PreciseNumber;
+import preciseValues.errorModel.ErrorType;
+import preciseValues.errorModel.NumberError;
+import preciseValues.number.PreciseNumber;
 
 import java.util.Objects;
 import java.math.BigDecimal;

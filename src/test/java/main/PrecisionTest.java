@@ -1,11 +1,11 @@
-package newPrecisionModel.test;
+package main;
 
-import newPrecisionModel.errorModel.ErrorType;
-import newPrecisionModel.errorModel.NumberError;
-import newPrecisionModel.number.PreciseNumber;
-import newPrecisionModel.lists.PrecisionList;
-import newPrecisionModel.lists.CommonPrecisionPrimitiveList;
-import newPrecisionModel.lists.UndefinedPrecisionPrimitiveList;
+import preciseValues.errorModel.ErrorType;
+import preciseValues.errorModel.NumberError;
+import preciseValues.number.PreciseNumber;
+import preciseValues.lists.PrecisionList;
+import preciseValues.lists.CommonPrecisionPrimitiveList;
+import preciseValues.lists.UndefinedPrecisionPrimitiveList;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

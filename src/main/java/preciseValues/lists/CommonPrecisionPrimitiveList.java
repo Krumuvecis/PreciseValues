@@ -1,6 +1,6 @@
-package newPrecisionModel.lists;
+package preciseValues.lists;
 
-import newPrecisionModel.errorModel.NumberError;
+import preciseValues.errorModel.NumberError;
 
 import java.util.List;
 import java.util.Objects;
