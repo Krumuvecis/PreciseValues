@@ -1,4 +1,4 @@
-package preciseValues.preciseNumber;
+package preciseValues.pNumber;
 
 import preciseValues.errorModel.NumberError;
 
@@ -11,9 +11,9 @@ import org.jetbrains.annotations.Nullable;
 /**
  * TODO: finish this javadoc
  */
-public class PreciseNumber {
+public class PNumber {
     private static final BigDecimal UNDEFINED_VALUE = BigDecimal.ZERO;
-    private static final NumberError UNDEFINED_ERROR = new NumberError();
+    private static final NumberError UNDEFINED_ERROR = NumberError.NON_NULL_ERROR;
 
     private BigDecimal value;
     private NumberError error;
@@ -24,7 +24,7 @@ public class PreciseNumber {
      * @param value Value part of the number.
      * @param error Error part of the number.
      */
-    public PreciseNumber(@Nullable BigDecimal value, @Nullable NumberError error) {
+    public PNumber(@Nullable BigDecimal value, @Nullable NumberError error) {
         setValue(value);
         setError(error);
     }
