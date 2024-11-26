@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
  * TODO: finish this javadoc
  */
 public class NumberError {
+    public static final NumberError NON_NULL_ERROR = new NumberError();
     private static final BigDecimal
             UNDEFINED_ERROR_VALUE = new BigDecimal(0),
             NON_NULL_AVERAGE_VALUE = new BigDecimal(0);
@@ -65,37 +66,45 @@ public class NumberError {
      * @param errorType     Type of error to return.
      * @param averageValue  Average value for reference.
      *
-     * @return Value of the error.
+     * @return Error of the desired type.
      */
-    public final @NotNull BigDecimal getError(
+    public final @NotNull NumberError getError(
             @Nullable ErrorType errorType,
             @Nullable BigDecimal averageValue) {
         return switch (Objects.requireNonNullElse(errorType, ErrorType.UNDEFINED)) {
             case ABSOLUTE -> getAbsoluteError(averageValue);
             case RELATIVE -> getRelativeError(averageValue);
-            default -> UNDEFINED_ERROR_VALUE;
+            default -> NON_NULL_ERROR;
         };
     }
 
-    private @NotNull BigDecimal getAbsoluteError(@Nullable BigDecimal averageValue) {
+    private @NotNull NumberError getAbsoluteError(@Nullable BigDecimal averageValue) {
+        return new NumberError(ErrorType.ABSOLUTE, getAbsoluteErrorValue(averageValue));
+    }
+
+    private @NotNull BigDecimal getAbsoluteErrorValue(@Nullable BigDecimal averageValue) {
         return switch (errorType) {
             case ABSOLUTE -> errorValue;
-            case RELATIVE -> getAbsoluteFromRelative(
+            case RELATIVE -> getAbsoluteValueFromRelativeValue(
                     errorValue,
                     Objects.requireNonNullElse(averageValue, NON_NULL_AVERAGE_VALUE));
             default -> UNDEFINED_ERROR_VALUE;
         };
     }
 
-    private static @NotNull BigDecimal getAbsoluteFromRelative(
+    private static @NotNull BigDecimal getAbsoluteValueFromRelativeValue(
             @NotNull BigDecimal errorValue,
             @NotNull BigDecimal averageValue) {
         return averageValue.multiply(errorValue);
     }
 
-    private @NotNull BigDecimal getRelativeError(@Nullable BigDecimal averageValue) {
+    private @NotNull NumberError getRelativeError(@Nullable BigDecimal averageValue) {
+        return new NumberError(ErrorType.RELATIVE, getRelativeErrorValue(averageValue));
+    }
+
+    private @NotNull BigDecimal getRelativeErrorValue(@Nullable BigDecimal averageValue) {
         return switch (errorType) {
-            case ABSOLUTE -> getRelativeFromAbsolute(
+            case ABSOLUTE -> getRelativeValueFromAbsoluteValue(
                     errorValue,
                     Objects.requireNonNullElse(averageValue, NON_NULL_AVERAGE_VALUE));
             case RELATIVE -> errorValue;
@@ -103,7 +112,7 @@ public class NumberError {
         };
     }
 
-    private static @NotNull BigDecimal getRelativeFromAbsolute(
+    private static @NotNull BigDecimal getRelativeValueFromAbsoluteValue(
             @NotNull BigDecimal errorValue,
             @NotNull BigDecimal averageValue) {
         BigDecimal result;
